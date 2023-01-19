@@ -5,6 +5,7 @@ export const insertionSort = (arr: number[]): number[] => {
       if (arr[j] > currentVal) {
         arr[j + 1] = arr[j]
       }
+      arr[j + 1] = currentVal
     }
   }
   return arr
