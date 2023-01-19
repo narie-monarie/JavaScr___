@@ -1,32 +1,32 @@
 //It is non-linear unlike LinkedLists
 
 export class Node {
-  left: Node | null
-  right: Node | null
-  value: number
+  left: Node | null;
+  right: Node | null;
+  value: number;
+
   constructor(value: number) {
-    this.value = value
-    this.right = null
-    this.left = null
+    this.value = value;
+    this.right = null;
+    this.left = null;
   }
 }
 
 class BinarySearchTree {
-
-  root: Node | null
+  root: Node | null;
 
   constructor() {
-    this.root = null
+    this.root = null;
   }
 
   add(value: number) {
-    let newNode = new Node(value)
+    let newNode = new Node(value);
     //if the root is empty use the newNode as the new root
     if (!this.root) {
-      this.root = newNode
+      this.root = newNode;
     }
 
-    let temp = this.root
+    let temp = this.root;
 
     while (true) {
       //if the new node is in the tree, we cannot insert
@@ -40,45 +40,49 @@ class BinarySearchTree {
         //if there's no Node on the left of the root,
         //we insert on the left
         if (!temp.left) {
-          temp.left = newNode
-          return true
+          temp.left = newNode;
+          return true;
         }
-        temp = temp.left
+        temp = temp.left;
       } else {
         if (!temp.right) {
-          temp.right = newNode
-          return true
+          temp.right = newNode;
+          return true;
         }
-        temp = temp.right
+        temp = temp.right;
       }
     }
   }
 
   contains(val: number): boolean {
+    //we check if the root is empty
     if (!this.root) {
-      console.log("No value in the Tree")
+      console.log('No value in the Tree');
     }
-    let temp = this.root
+    //make a pointer to the root called temp
+    let temp = this.root;
+    //if the root && left || right is not null
     while (temp) {
       if (val === temp.value) {
-        return true
+        return true;
       } else if (temp.value > val) {
-        temp = temp.left
+        temp = temp.left;
       } else {
-        temp = temp.right
+        temp = temp.right;
       }
     }
 
-    return false
+    return false;
   }
 }
 
-let tree = new BinarySearchTree()
-tree.add(12)
-tree.add(121)
-tree.add(1)
-tree.add(7)
-tree.add(5)
+let tree = new BinarySearchTree();
+tree.add(12);
+tree.add(121);
+tree.add(1);
+tree.add(7);
+tree.add(5);
 
-console.log(tree.contains(12))
-console.log(tree.contains(5))
+console.log(tree.contains(12));
+console.log(tree.contains(5));
+console.log(tree.contains(21));
